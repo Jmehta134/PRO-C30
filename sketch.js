@@ -41,7 +41,12 @@ function setup() {
   Block16 = new Block(390,155,30,40);
 
   //polygon
-  polygon = Bodies.circle(50,200,20);
+  var options = {
+    restitution : 0.3,
+    friction : 0.5,
+    density : 1.2
+  }
+  polygon = Bodies.circle(50,200,20,options);
   World.add(world,polygon);
 
   Slingshot = new SlingShot(this.polygon,{x:100,y:150});
