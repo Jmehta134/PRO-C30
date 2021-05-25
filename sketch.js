@@ -105,7 +105,7 @@ function draw() {
   Block9.display();
 
   Slingshot.display();
-  fill(0,0,255);
+  fill(255,0,0);
   ellipse(polygon.position.x,polygon.position.y,40,40);
   drawSprites();
 }
@@ -114,4 +114,9 @@ function mouseDragged(){
 }
 function mouseReleased(){
   Slingshot.fly();
+}
+function keyPressed(){
+  if (keyCode === 32) {
+    Slingshot.attach(this.polygon);
+  }  
 }
