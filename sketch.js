@@ -9,8 +9,9 @@ var block1,block2,block3,block4,block5,block6,block7,block8,block9,block10,block
 var Block1,Block2,Block3,Block4,Block5,Block6,Block7,Block8,Block9;
 var Slingshot;
 var polygon;
+var bg = 255;
 function preload(){
-  
+  backgroundimg();
 }
 function setup() {
   var canvas = createCanvas(800,400);
@@ -72,7 +73,7 @@ function setup() {
 }
 
 function draw() {
-  background(255,255,255);  
+  background(bg,bg,100);  
   Engine.update(engine);
   stand.display();
   stand2.display();
@@ -119,4 +120,18 @@ function keyPressed(){
   if (keyCode === 32) {
     Slingshot.attach(this.polygon);
   }  
+}
+async function backgroundimg(){
+  var response = await fetch ("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+  var responseJSON = await response.json();
+  var datetime = responseJSON.datetime;
+  var hour = datetime.slice(11,13);
+  console.log(hour);
+  //var hour = 20;
+  if (hour >= 06 && hour <= 18) {
+      bg  = 255;
+  } else {
+      bg = 100;
+  }
+
 }
